@@ -1,0 +1,12 @@
+pandas
+geopandas
+numpy
+scikit-learn
+xgboost
+deap
+fastapi
+uvicorn
+psycopg2-binary
+folium
+dask
+python-dotenv
