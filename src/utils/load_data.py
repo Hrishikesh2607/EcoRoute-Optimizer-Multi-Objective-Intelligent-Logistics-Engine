@@ -6,6 +6,6 @@ print(trips.shape)
 print(trips.columns.tolist())
 print(trips.head())
 
-zones= gpd.read_file(r"C:\Users\DELL\Desktop\eco-route-optimizer\data\raw\taxi_zones.zip")
+zones = gpd.read_file("/vsizip/data/raw/taxi_zones.zip/taxi_zones/taxi_zones.shp")
 print(zones.shape)
 print(zones.head())
