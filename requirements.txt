@@ -11,3 +11,5 @@ folium
 dask
 python-dotenv
 networkx
+sqlalchemy
+geoalchemy2

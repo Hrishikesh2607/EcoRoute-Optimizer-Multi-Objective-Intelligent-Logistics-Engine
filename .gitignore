@@ -3,3 +3,5 @@ venv/
 
 data/raw/*
 data/processed/*
+
+src/db/*
