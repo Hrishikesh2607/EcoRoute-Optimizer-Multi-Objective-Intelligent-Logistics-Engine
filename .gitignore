@@ -4,4 +4,10 @@ venv/
 data/raw/*
 data/processed/*
 
-src/db/*
+
+.env
+.env.local
+.env.*.local
+*.env
+
+src/db/load_data.py
