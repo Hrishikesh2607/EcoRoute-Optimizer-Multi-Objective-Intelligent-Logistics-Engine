@@ -13,3 +13,4 @@ python-dotenv
 networkx
 sqlalchemy
 geoalchemy2
+follium
