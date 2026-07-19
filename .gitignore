@@ -4,8 +4,6 @@ venv/
 data/raw/*
 data/processed/*
 
-outputs/*
-
 .env
 .env.local
 .env.*.local
