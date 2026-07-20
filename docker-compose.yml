@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: ecoroute_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ecoroute
+      POSTGRES_USER: ecoroute_user
+      POSTGRES_PASSWORD: ecoroute_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'exec pg_isready -U ecoroute_user -d ecoroute || exit 1'"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  api:
+    build: .
+    container_name: ecoroute_api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://ecoroute_user:ecoroute_pass@db:5432/ecoroute
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/processed:/app/data/processed
+      - ./models:/app/models
+      - ./outputs:/app/outputs
+
+volumes:
+  pgdata:

@@ -57,14 +57,14 @@ def optimize_route(req: OptimizeRequest, db: Session = Depends(get_db)):
     db.execute(
         query,
         {
-            "user_id": req.user_id,
-            "start_node": req.start_node,
-            "end_node": req.end_node,
-            "weight_time": req.weight_time,
-            "weight_cost": req.weight_cost,
-            "optimized_cost": total_fare,
-            "optimized_duration": total_duration,
-            "route_path": best_path,
+            "user_id": str(req.user_id if req.user_id else "anonymous"),
+            "start_node": int(best_path[0]),      
+            "end_node": int(best_path[-1]),       
+            "weight_time": float(req.weight_time),
+            "weight_cost": float(req.weight_cost),
+            "optimized_cost": float(total_fare),
+            "optimized_duration": float(total_duration),
+            "route_path": best_path,              
         }
     )
     db.commit()
