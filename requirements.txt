@@ -15,3 +15,5 @@ sqlalchemy
 geoalchemy2
 folium
 pyarrow
+pytest
+httpx
