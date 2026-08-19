@@ -1,6 +1,6 @@
-# EcoRoute Optimizer
+# EcoRoute Optimizer: Multi-Objective Intelligent Logistics Engine
 
-![Build Status](https://github.com/Hrishikesh2607/eco-route-optimizer/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/Hrishikesh2607/EcoRoute-Optimizer-Multi-Objective-Intelligent-Logistics-Engine/actions/workflows/ci.yml/badge.svg)](https://github.com/Hrishikesh2607/EcoRoute-Optimizer-Multi-Objective-Intelligent-Logistics-Engine/actions/workflows/ci.yml)
 ![Python 3.11](https://img.shields.io/badge/python-3.11-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
