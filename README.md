@@ -81,8 +81,8 @@ The system also includes ESG-style CO2 reporting and "what-if" scenario analysis
 **Prerequisites:** Docker and Docker Compose installed.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/eco-route-optimizer.git
-cd eco-route-optimizer
+git clone https://github.com/Hrishikesh2607/EcoRoute-Optimizer-Multi-Objective-Intelligent-Logistics-Engine.git
+cd EcoRoute-Optimizer-Multi-Objective-Intelligent-Logistics-Engine
 docker-compose up --build
 ```
 
