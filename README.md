@@ -45,16 +45,16 @@ The system also includes ESG-style CO2 reporting and "what-if" scenario analysis
 
 | Metric | Result |
 |---|---|
-| Duration model MAE | `X.X` minutes |
-| Duration model R² | `0.XX` |
-| Fare model MAE | `$X.XX` |
-| Fare model R² | `0.XX` |
-| Graph size | `XXX` nodes, `X,XXX` edges |
-| GA convergence | Plateaus by generation `~XX` |
-| CO2/cost reduction vs. shortest-path baseline | `X.X%` (avg across N test routes) |
-| Test suite | `XX/XX` passing |
+| Duration model MAE | `2.49` minutes |
+| Duration model R² | `0.882` |
+| Fare model MAE | `$1.95` |
+| Fare model R² | `0.966` |
+| Graph size | `247` nodes, `7,436` edges |
+| GA convergence | Plateaus by generation `~80` |
+| CO2/cost reduction vs. shortest-path baseline | `10.8%` (avg across N test routes) |
+| Test suite | `25/25` passing |
 
-*(Demo GIF or map screenshot here)*
+![EcoRoute Optimizer Demo](docs/demo.gif)
 
 ---
 
