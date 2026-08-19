@@ -23,17 +23,9 @@ The system also includes ESG-style CO2 reporting and "what-if" scenario analysis
 
 ## Architecture
 
-```
-[Client] --> [FastAPI Gateway]
-                |
-    +-----------+-----------+
-    |           |           |
-[Auth Service] [Optimizer Service] [Model Registry]
-                |           |
-    [Genetic Algorithm] <-> [XGBoost Predictor]
-                |
-        [PostgreSQL / PostGIS] (Spatial DB)
-```
+<p align="center">
+  <img src="docs/architecture.svg" alt="EcoRoute Optimizer Architecture" width="800">
+</p>
 
 - **Graph layer**: NetworkX directed graph of NYC taxi zones, with edges weighted by model-predicted duration and fare.
 - **Optimization**: Custom graph-aware crossover (splices paths at shared intermediate nodes) and mutation (replaces nodes with valid graph neighbors) — standard DEAP operators don't natively handle variable-length graph paths, so these were built from scratch.
