@@ -135,6 +135,44 @@ def run_ga(start, end, weight_time=0.5, weight_cost=0.5, generations=50, pop_siz
     print("Convergence trend (first 5, last 5):", best_per_gen[:5], best_per_gen[-5:])
     return best, best_per_gen
 
+def evaluate_with_fuel_multiplier(individual, weight_time=0.5, weight_cost=0.5, fuel_multiplier=1.0):
+    total_duration=0
+    total_fare=0
+    for u,v in zip(individual[:-1], individual[1:]):
+        if not G.has_edge(u,v):
+            return(1e6,)
+        total_duration += G[u][v]["duration"]
+        total_fare += G[u][v]["fare"]*fuel_multiplier
+
+    normalized_duration=total_duration / 60.0
+    normalized_fare= total_fare / 20.0
+    weighted_score= (weight_time*normalized_duration) + (weight_cost * normalized_fare)
+    return (weighted_score,)
+
+def run_ga_scenario(start, end, weight_time=0.5, weight_cost=0.5,
+                    fuel_multiplier=1.0, generations=50, pop_size=80):
+    pop= [make_individual(start, end) for _ in range(pop_size)]
+
+    for gen in range(generations):
+        fitnesses= [evaluate_with_fuel_multiplier(ind, weight_time, weight_cost, fuel_multiplier) for ind in pop]
+        for ind, fit in zip(pop, fitnesses):
+            ind.fitness.value= fit
+
+        pop= toolbox.select(pop, len(pop))
+        offspring= [toolbox.clone(ind) for ind in pop]
+
+        for i in range(0, len(offspring) -1, 2):
+            if random.random() < 0.6:
+                offspring[i], offspring[i+1]= toolbox.mate(offspring[i], offspring[i+1])
+        for ind in offspring:
+            if random.random() < 0.3:
+                toolbox.mutate(ind)
+            del ind.fitness.values
+
+        pop = offspring
+
+    best= min(pop, key=lambda i: evaluate_with_fuel_multiplier(i, weight_time, weight_cost, fuel_multiplier)[0])
+    return best
 
 if __name__ == "__main__":
     start_node = list(G.nodes())[0]
